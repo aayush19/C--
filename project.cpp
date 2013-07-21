@@ -16,7 +16,8 @@ void lines(int count)
 }
 void display_records()
 {
-	
+	fstream f;
+	f.open("student.dat");
 }
 void insert_record()
 {
@@ -28,18 +29,23 @@ void search_record()
 }
 void dev_info()
 {
-	cout<<"Dev Info";
+	lines(1);
+	cout<<"Dev Info:\n";
+	lines(1);
+	cout<<"Software Developer:\n Prathmesh Ranaut\n Class : 12\n";
+	lines(1);
 }
 void generate_menu()
 {
 	cout<<"Functions available:- \n"<<"1. Display All Records\n"<<"2. Insert a Record\n"<<"3. Search a Record\n"<<"4. Developer Info\n";
+	lines(1);
 }
 int main(int argc, char *argv[]) {
 	/*
 		Variables
 	*/
 	int ch = 0;
-	
+	char yn;
 	/*
 		Function options available
 		1. Display All records
@@ -53,31 +59,45 @@ int main(int argc, char *argv[]) {
 	lines(1);
 	//Some welcoming stuff
 	cout<<"Welcome to a program by Prathmesh Ranaut"<<endl;
-	lines(1);
-	generate_menu();
-	cout<<"Please input the number of the function you would like to call.";
-	cin>>ch;
-	cout<<endl;
 	//First get the user to select from the available options
-	switch(ch)
+	do
 	{
-		/*
-			Display all records
-		*/
-		case 1:
-			display_records();
-			break;
-		case 2:
-			insert_record();
-			break;
-		case 3:
-			search_record();
-			break;
-		case 4:
-			dev_info();
-			break;
-		default:
+		lines(1);
+		generate_menu();
+		cout<<"Please input the number of the function you would like to call.";
+		cin>>ch;
+		cout<<endl;
+		switch(ch)
+		{
+			/*
+				Display all records
+			*/
+			case 1:
+				display_records();
+				break;
+			/*
+				Inserts Records into a file	
+			*/
+			case 2:
+				insert_record();
+				break;
+			/*
+				Search records in File
+			*/
+			case 3:
+				search_record();
+				break;
+			/*
+				Developer Information
+			*/
+			case 4:
+				dev_info();
+				break;
+			default:
 
-			break;
-	}
+				break;
+		}
+		cout<<"Would you like to continue? (y/n)"<<endl;
+		cin>>yn;
+	}while(yn == 'Y' || yn == 'y');
 }
