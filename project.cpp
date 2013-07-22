@@ -2,7 +2,11 @@
 #include <fstream>
 
 using namespace std;
-
+/*
+	Banking management System
+	Version: 0.1
+	Author:
+*/
 void lines(int count)
 {
 	for(int j = 0; j < count; j++)
@@ -17,7 +21,7 @@ void lines(int count)
 void display_records()
 {
 	fstream f;
-	f.open("student.dat");
+	f.open("banking.dat");
 }
 void insert_record()
 {
@@ -94,7 +98,7 @@ int main(int argc, char *argv[]) {
 				dev_info();
 				break;
 			default:
-
+				
 				break;
 		}
 		cout<<"Would you like to continue? (y/n)"<<endl;
