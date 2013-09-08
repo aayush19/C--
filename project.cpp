@@ -3,10 +3,10 @@
 
 using namespace std;
 /*
-Banking Management System
-Version        : 0.1
-Author         : Prathmesh Ranaut
-Created Date   : 21 July 2013
+	Banking Management System
+	Version        : 0.8
+	Author         : Prathmesh Ranaut
+	Created Date   : 21 July 2013
 */
 void lines(int count)
 {
