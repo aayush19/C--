@@ -6,18 +6,18 @@
 
 class account
 {
-	int acno;
+	int account_no;
 	char name[50];
 	int deposit;
 	char type;
 public:
 	void create_account();	//function to get data from user
-	void show_account();	//function to show data on screen
+	void display_account();	//function to show data on screen
 	void modify();   //function to get new data from user
 	void dep(int);	//function to accept amount and add to balance amount
 	void draw(int);	//function to accept amount and subtract from balance amount
 	void report();	//function to show data in tabular format
-	int retacno();	//function to return account number
+	int retaccount_no();	//function to return account number
 	int retdeposit();	//function to return balance amount
 	char rettype();	//function to return type of account
 };         //class ends here
@@ -25,7 +25,7 @@ public:
 void account::create_account()
 {
 	cout<<"\nEnter The account No. :";
-	cin>>acno;
+	cin>>account_no;
 	cout<<"\n\nEnter The Name of The account Holder : ";
 	gets(name);
 	cout<<"\nEnter Type of The account (C/S) : ";
@@ -36,9 +36,9 @@ void account::create_account()
 	cout<<"\n\n\nAccount Created..";
 }
 
-void account::show_account()
+void account::display_account()
 {
-	cout<<"\nAccount No. : "<<acno;
+	cout<<"\nAccount No. : "<<account_no;
 	cout<<"\nAccount Holder Name : ";
 	cout<<name;
 	cout<<"\nType of Account : "<<type;
@@ -48,7 +48,7 @@ void account::show_account()
 
 void account::modify()
 {
-	cout<<"\nThe account No."<<acno;
+	cout<<"\nThe account No."<<account_no;
 	cout<<"\n\nEnter The Name of The account Holder : ";
 	gets(name);
 	cout<<"\nEnter Type of The account (C/S) : ";
@@ -72,12 +72,12 @@ void account::draw(int x)
 
 void account::report()
 {
-	cout<<acno<<setw(10)<<" "<<name<<setw(10)<<" "<<type<<setw(6)<<deposit<<endl;
+	cout<<account_no<<setw(10)<<" "<<name<<setw(10)<<" "<<type<<setw(6)<<deposit<<endl;
 }
 
-int account::retacno()
+int account::retaccount_no()
 {
-	return acno;
+	return account_no;
 }
 
 int account::retdeposit()
@@ -181,9 +181,9 @@ void display_sp(int n)
 	cout<<"\nBALANCE DETAILS\n";
     while(inFile.read((char *) &ac, sizeof(account)))
 	{
-		if(ac.retacno()==n)
+		if(ac.retaccount_no()==n)
 		{
-			ac.show_account();
+			ac.display_account();
 			flag=1;
 		}
 	}
@@ -205,9 +205,9 @@ void modify_account(int n)
 	}
     while(File.read((char *) &ac, sizeof(account)) && found==0)
 	{
-		if(ac.retacno()==n)
+		if(ac.retaccount_no()==n)
 		{
-			ac.show_account();
+			ac.display_account();
 			cout<<"\n\nEnter The New Details of account"<<endl;
 			ac.modify();
 			int pos=(-1)*sizeof(account);
@@ -237,7 +237,7 @@ void delete_account(int n)
 	inFile.seekg(0,ios::beg);
 	while(inFile.read((char *) &ac, sizeof(account)))
 	{
-		if(ac.retacno()!=n)
+		if(ac.retaccount_no()!=n)
 		{
 			outFile.write((char *) &ac, sizeof(account));
 		}
@@ -284,9 +284,9 @@ void deposit_withdraw(int n, int option)
 	}
     while(File.read((char *) &ac, sizeof(account)) && found==0)
 	{
-		if(ac.retacno()==n)
+		if(ac.retaccount_no()==n)
 		{
-			ac.show_account();
+			ac.display_account();
 			if(option==1)
 			{
 				cout<<"\n\n\tTO DEPOSITE AMOUNT ";
